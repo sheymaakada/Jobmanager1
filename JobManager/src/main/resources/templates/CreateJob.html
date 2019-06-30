@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<link type="text/css" rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+ <link rel="stylesheet" href="../../static/css/style.css" th:href="@{css/style.css}" />
+ <script th:src="@{jquery/jquery.min.js}"></script>
+  <script th:src="@{/jquery/bootstrap.min.js}"></script>
+    <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/landing-page.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="fragments/header::header"></div>
+<br>
+<div class="container form-group">
+<form th:action="@{insertJob}" method="post" th:object="${job}">
+Id:<input th:field="*{id}" class="form-control" placeholder="ID"/>
+Budget:<input class="form-control" placeholder="Budget" th:field="*{budget}"/>
+Date Finish:<input th:field="*{date_finish}" class="form-control" placeholder="Date Finish"/>
+<div class="row">
+<div class="col">
+Description:<input th:field="*{description}" class="form-control" placeholder="Description"/>
+</div>
+<div class="col">
+Status:<input name="status" class="form-control" placeholder="Status"/></div></div>
+<br>
+<div>
+<label>Freelancer</label>
+<select th:field="*{freelancerId}" class="custom-select">
+<option th:each="listF:${f}" th:value="${listF.id}" th:text="${listF.lastname}"></option>
+</select>
+</div>
+<br>
+<div>
+<label>Category</label>
+<select th:field="*{category}" class="custom-select">
+<option th:each="listCat:${cat}" th:value="${listCat.id}" th:text="${listCat.name}"></option>
+</select>
+</div>
+<br>
+<div>
+<label>Client</label>
+<select th:field="*{client_id}" class="custom-select">
+<option th:each="listclt:${clients}" th:value="${listclt.client_id}" th:text="${listclt.lastname}"></option>
+</select>
+</div>
+<br>
+<input type="submit" value="Add" class="btn btn-primary"/>
+</form>
+</div>
+<div th:replace="fragments/footer::footer"></div>
+</body>
+</html>

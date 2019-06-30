@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<link type="text/css" rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+ <link rel="stylesheet" href="../../static/css/style.css" th:href="@{css/style.css}" />
+ <script th:src="@{jquery/jquery.min.js}"></script>
+  <script th:src="@{/jquery/bootstrap.min.js}"></script>
+    <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/landing-page.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="fragments/header::header"></div>
+<br>
+<div class="container form-group">
+<form th:action="@{update}" th:object="${Freelancer1}" method="post">
+Id:<input class="form-control" placeholder="ID" th:field="*{id}"/>
+Description:<input th:field="*{description}" class="form-control" placeholder="Description"/>
+<div class="row"><div class="col">
+Firstname:<input th:field="*{firstname}" class="form-control" placeholder="First name"/></div>
+<div class="col">
+Lastname:<input th:field="*{lastname}" class="form-control" placeholder="Last name"/></div></div>
+Email:<input th:field="*{email}" class="form-control" placeholder="Email"/>
+Password:<input th:field="*{password}" class="form-control" placeholder="Password"/>
+Username::<input th:field="*{username}" class="form-control" placeholder="Username"/>
+<br>
+<input type="submit" value="Update Freelancer" class="btn btn-success"/>
+</form>
+</div>
+<div th:replace="fragments/footer::footer"></div>
+</body>
+</html>
